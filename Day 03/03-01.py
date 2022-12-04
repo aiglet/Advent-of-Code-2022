@@ -1,5 +1,5 @@
 # Open the file and split it into lines
-data = open("input.txt")
+data = open("test.txt")
 lines = data.readlines()
 
 # This function splits a string in half and returns both halves separately
@@ -23,10 +23,10 @@ def rucksack_priority_sum(contents):
         # Split the line into its two containers
         container1, container2 = splitstring(line)
 
-        for x in container1:
-            for y in container2:
-                if x == y:
-                    priority_items += x
+        set1 = set(container1)
+        set2 = set(container2)
+        result = str(set1.intersection(set2))
+        priority_items += result
 
     unique_priority = set(priority_items)
 

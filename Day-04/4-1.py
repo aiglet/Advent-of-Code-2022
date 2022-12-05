@@ -24,7 +24,9 @@ def overlap(sections):
             if section1[0] in range_section2:
                 total_overlaps += 1
         elif section2[0] == section2[2]:
-            if section2[0] in section1:
+            range_section1 = range(section1[0], section1[2])
+            print(range_section1)
+            if section2[0] in range_section1:
                 total_overlaps += 1
 
     print(total_overlaps)

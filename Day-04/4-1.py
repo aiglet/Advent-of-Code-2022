@@ -22,11 +22,11 @@ def overlap(sections):
             for x in range_section1:
                 if int(start2) == x:
                     total_overlaps += 1
-        elif start1 <= start2:
-            if stop1 >= stop2:
+        elif int(start1) <= int(start2):
+            if int(stop1) >= int(stop2):
                 total_overlaps += 1
-        elif start1 >= start2:
-            if stop1 <= stop2:
+        elif int(start1) >= int(start2):
+            if int(stop1) <= int(stop2):
                 total_overlaps += 1
 
 

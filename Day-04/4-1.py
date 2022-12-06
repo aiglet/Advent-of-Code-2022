@@ -1,33 +1,34 @@
 # Open the file and split it into lines
-data = open("test.txt")
+data = open("input.txt")
 lines = data.readlines()
-
 
 
 def overlap(sections):
     total_overlaps = 0
 
     for line in sections:
-        splits = line.split(",")
-        section1 = splits[0]
-        section2 = splits[1]
+        section1, section2 = line.split(",")
 
-        if section1[0] < section2[0]:
-            if section1[2] > section2[2]:
+        start1, stop1 = section1.split("-")
+        start2, stop2 = section2.split("-")
+
+        if start1 == stop1:
+            range_section2 = range(int(start2), (int(stop2)+1))
+            for x in range_section2:
+                if int(start1) == x:
+                    total_overlaps += 1
+        elif start2 == stop2:
+            range_section1 = range(int(start1), (int(stop1)+1))
+            for x in range_section1:
+                if int(start2) == x:
+                    total_overlaps += 1
+        elif start1 <= start2:
+            if stop1 >= stop2:
                 total_overlaps += 1
-        elif section1[0] > section2[0]:
-            if section1[2] < section2[2]:
+        elif start1 >= start2:
+            if stop1 <= stop2:
                 total_overlaps += 1
-        elif section1[0] == section1[2]:
-            range_section2 = range(section2[0], section2[2])
-            print(range_section2)
-            if section1[0] in range_section2:
-                total_overlaps += 1
-        elif section2[0] == section2[2]:
-            range_section1 = range(section1[0], section1[2])
-            print(range_section1)
-            if section2[0] in range_section1:
-                total_overlaps += 1
+
 
     print(total_overlaps)
 

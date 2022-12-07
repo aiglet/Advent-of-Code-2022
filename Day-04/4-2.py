@@ -14,11 +14,16 @@ def overlap(sections):
         start1, stop1 = section1.split("-")
         start2, stop2 = section2.split("-")
 
-        # Check for the possible conditions that would indicate an overlap
-        if int(start1) <= int(start2) or int(stop1) >= int(stop2):
-                total_overlaps += 1
-        elif int(start1) >= int(start2) or int(stop1) <= int(stop2):
-                total_overlaps += 1
+        # Turn the ranges of sections into sets
+        set1 = set(range(int(start1), int(stop1)+1))
+        set2 = set(range(int(start2), int(stop2)+1))
+
+        # The overlap is where the two sets intersect
+        overlaps = set1.intersection(set2)
+
+        # If the intersection of the section sets is NOT empty, then there is an overlap
+        if len(overlaps) > 0:
+            total_overlaps +=1
 
     print(total_overlaps)
 

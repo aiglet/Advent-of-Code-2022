@@ -15,9 +15,9 @@ def overlap(sections):
         start2, stop2 = section2.split("-")
 
         # Check for the possible conditions that would indicate an overlap
-        if int(start1) <= int(start2) and int(stop1) >= int(stop2):
+        if int(start1) <= int(start2) or int(stop1) >= int(stop2):
                 total_overlaps += 1
-        elif int(start1) >= int(start2) and int(stop1) <= int(stop2):
+        elif int(start1) >= int(start2) or int(stop1) <= int(stop2):
                 total_overlaps += 1
 
     print(total_overlaps)
